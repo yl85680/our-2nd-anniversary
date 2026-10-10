@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our 2nd Anniversary | 時光展覽與機票</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- 引入獨立 CSS 樣式檔 -->
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <!-- 頂部分頁選單 (含左側標題與手機版漢堡選單) -->
+  <nav class="nav-bar">
+    <div class="nav-title">
+      <i class="fa-solid fa-heart" style="color: var(--primary);"></i> Our 2nd Anniversary
+    </div>
+
+    <!-- 手機版漢堡按鈕 -->
+    <div class="hamburger-btn" onclick="toggleMobileMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="nav-links" id="nav-links">
+      <a href="#section-timeline" class="nav-item active" onclick="closeMobileMenu()"><i
+          class="fa-solid fa-timeline"></i> 時光軸</a>
+      <a href="#section-gallery" class="nav-item" onclick="closeMobileMenu()"><i class="fa-solid fa-images"></i>
+        回憶相冊</a>
+      <a href="#section-footprints" class="nav-item" onclick="closeMobileMenu()"><i
+          class="fa-solid fa-map-location-dot"></i> 旅行足跡</a>
+      <a href="#section-scratch" class="nav-item" onclick="closeMobileMenu()"><i class="fa-solid fa-gift"></i> 驚喜遊戲</a>
+      <a href="#quiz-box" class="nav-item" onclick="closeMobileMenu()"><i class="fa-solid fa-clipboard-question"></i>
+        默契考驗</a>
+      <a href="#section-envelope" class="nav-item" onclick="closeMobileMenu()"><i
+          class="fa-solid fa-envelope-open-text"></i> 真心話信封</a>
+    </div>
+  </nav>
+
+  <!-- 音效控制浮鈕 -->
+  <div class="audio-control" id="bgm-toggle">
+    <i class="fa-solid fa-music"></i>
+    <span id="bgm-text">背景音樂：開啟</span>
+  </div>
+
+  <!-- 返回頂部按鈕 -->
+  <div class="back-to-top" id="back-to-top" onclick="scrollToTop()" title="回到頂部">
+    <i class="fa-solid fa-chevron-up"></i>
+  </div>
+
+  <!-- 彩蛋角落圖示 -->
+  <div class="easter-egg-cat" id="cat-egg" title="點我 5 次試試看！">🐾</div>
+
+  <!-- 1. 開場門票 (Ticket Gateway) -->
+  <div id="ticket-overlay">
+    <div class="ticket-card">
+      <div class="ticket-header">
+        <h2>ANNIVERSARY BOARDING PASS</h2>
+        <span class="badge">FLIGHT #LOVE2024</span>
+      </div>
+      <div class="ticket-body">
+        <div class="ticket-info">
+          <label>PASSENGER NAME / 旅客姓名</label>
+          <p>老波</p>
+
+          <label>DESTINATION / 目的地</label>
+          <p>兩週年時光展覽館 ➔ 未來</p>
+
+          <label>DATE & GATE / 日期與登機門</label>
+          <p>DAY 730 | GATE 02</p>
+        </div>
+        <div class="ticket-stub">
+          <label>SEAT</label>
+          <p style="color: var(--primary); font-size: 1.4rem;">FOREVER</p>
+          <div class="barcode"></div>
+        </div>
+        <div class="stamp" id="ticket-stamp">PASSED 2 YEARS</div>
+      </div>
+    </div>
+
+    <button class="punch-btn" id="punch-btn">
+      <i class="fa-solid fa-ticket"></i> 驗票進入展覽
+    </button>
+  </div>
+
+  <!-- 2. 主要內容 (Main Site) -->
+  <div class="container">
+    <header class="hero">
+      <h1>Happy 2nd Anniversary! 💕</h1>
+      <p>謝謝你陪我走過 730 個日夜，這是專屬於我們的時光軌跡</p>
+
+      <div class="timer-box">
+        <div class="time-unit"><span id="days">0</span><label>DAYS</label></div>
+        <div class="time-unit"><span id="hours">0</span><label>HOURS</label></div>
+        <div class="time-unit"><span id="minutes">0</span><label>MINUTES</label></div>
+        <div class="time-unit"><span id="seconds">0</span><label>SECONDS</label></div>
+      </div>
+    </header>
+
+    <!-- 區塊 1: 時光拍立得牆 (3D 翻牌) -->
+    <section id="section-timeline">
+      <h3 class="section-title">時光拍立得 (點擊卡片翻面)</h3>
+      <div class="timeline">
+
+        <!-- 卡片 1 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="meet.jpg" alt="我們認識的第一天" style="object-position: 55% 35%;">
+              </div>
+              <div class="card-caption">我們認識的第一天</div>
+              <div class="card-date">Day -555</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「那一天起，我的日常裡多了一個人。很開心在茫茫人海可以遇見你 <br> By菜雞光遇仔」</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 2 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="first_meet.jpg" alt="第一次見面">
+              </div>
+              <div class="card-caption">第一次見面</div>
+              <div class="card-date">Day -319</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「那時候可能突然很E，約了一大坨人出門玩，你看起來有點呆呆的好可愛<br>(ˊ꒳ ˋ)這就是一見鍾情的感覺嗎.....」</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 3 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="first_date.jpg" alt="第一次約會">
+              </div>
+              <div class="card-caption">第一次約會</div>
+              <div class="card-date">Day -284</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「第一次跟男生出門玩、第一次給男生載那麼遠、第一次那麼晚回家，然後這個男生怎麼這麼香🤤」</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 4 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="birthday.jpg" alt="一起過的生日">
+              </div>
+              <div class="card-caption">一起過的生日</div>
+              <div class="card-date">Day 1</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「👑解鎖成就：跟男友一起做蛋糕:D激動的心顫抖的手啊啊啊啊他好認真好可愛喔好喜歡」</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 5 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="newyear.jpg" alt="人生第一次出門跨年">
+              </div>
+              <div class="card-caption">人生第一次出門跨年</div>
+              <div class="card-date">Day 447</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「倒數三二一，新的一年第一眼看到的人依然是你，真好。沒有想過人生中第一次去外面跨年竟然是跟男友在一起。」</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 6 -->
+        <div class="flip-card" onclick="flipCard(this)">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="photo-placeholder">
+                <img src="anniversary.jpg" alt="兩週年快樂">
+              </div>
+              <div class="card-caption">兩週年快樂</div>
+              <div class="card-date">Day 730</div>
+            </div>
+            <div class="flip-card-back">
+              <p>「通關兩週年！未來還有好久喔，請多多指教！❤️」</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 區塊 2: 點擊放大相冊畫廊 (完整 1~8 組) -->
+    <section id="section-gallery">
+      <h3 class="section-title">回憶畫廊 (點擊翻看)</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox('gallery1.jpg', '我其實覺得我那時候好醜')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-image"></i>
+          </div>
+          <div class="gallery-title">海生館</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery2.jpg', '卡比好可愛 男人也好可愛(史詩級過肺)')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-bowl-food"></i>
+          </div>
+          <div class="gallery-title">看電影</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery3.jpg', '榮登愛樹(但不是這棵是溜滑梯那顆)')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+          </div>
+          <div class="gallery-title">過聖誕節</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery4.jpeg', '新成員加入')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-face-laugh-wink"></i>
+          </div>
+          <div class="gallery-title">波寶誕生</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery5.jpg', '奇奇怪怪可可愛愛')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-hand-peace"></i>
+          </div>
+          <div class="gallery-title">耶✌🏻</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery6.jpg', '嬌羞的男人  真香')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <div class="gallery-title">小嬌妻:D</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery7.jpg', '餵草的男孩')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+          <div class="gallery-title">動物飼養員</div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox('gallery8.jpg', '咕嚕咕嚕咕嚕咕嚕')">
+          <div class="gallery-photo">
+            <i class="fa-solid fa-heart-circle-plus"></i>
+          </div>
+          <div class="gallery-title">水好鹹....</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 區塊 3: 旅行足跡卡片 (6 個地點 + 左右滑動切換) -->
+    <section id="section-footprints">
+      <h3 class="section-title">我們的旅行足跡 (點擊解鎖旅行日記)</h3>
+
+      <div class="footprints-slider-wrapper">
+        <button class="slider-btn prev-btn" onclick="slideFootprints(-1)">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <div class="footprints-slider-container" id="footprints-track">
+
+          <!-- 卡片 1： -->
+          <div class="footprint-card" onclick="openLightbox('trip_taipei_detail.jpg', '給男朋朋載耶好開心海邊風景好美')">
+            <div class="footprint-banner">
+              <img src="trip_taipei_cover.jpg" alt="ERR">
+            </div>
+            <div class="footprint-body">
+              <h4>台南小旅行</h4>
+              <p>不算跨年的跨年，雖然在12/31去的</p>
+              <span class="footprint-tag">📍 台南</span>
+            </div>
+          </div>
+
+          <!-- 卡片 2： -->
+          <div class="footprint-card" onclick="openLightbox('trip_yunlin_detail.jpg', '花園鰻好可愛 我也好可愛 男朋友也好可愛')">
+            <div class="footprint-banner">
+              <img src="trip_yunlin_cover.jpg" alt="ERR">
+            </div>
+            <div class="footprint-body">
+              <h4>屏東海生館輕旅行</h4>
+              <p>屁屁麻掉的旅行</p>
+              <span class="footprint-tag">📍 屏東</span>
+            </div>
+          </div>
+
+          <!-- 卡片 3：台中生日 -->
+          <div class="footprint-card" onclick="openLightbox('trip_kaohsiung_detail.jpg', '第一次跟男生睡覺欸好害羞/ / / /')">
+            <div class="footprint-banner">
+              <img src="trip_kaohsiung_cover.jpg" alt="ERR">
+            </div>
+            <div class="footprint-body">
+              <h4>一周年小旅行</h4>
+              <p>跟老波去台中過我們的一周年~~~。</p>
+              <span class="footprint-tag">📍 台中</span>
+            </div>
+          </div>
+
+          <!-- 卡片 4：台中跨年 -->
+          <div class="footprint-card" onclick="openLightbox('trip_tainan_detail.jpg', '倒數完接吻的畫面我大概一輩子忘不了')">
+            <div class="footprint-banner">
+              <img src="trip_tainan_cover.jpg" alt="ERR">
+            </div>
+            <div class="footprint-body">
+              <h4>跨年</h4>
+              <p>跟老波去跨年，好冷。</p>
+              <span class="footprint-tag">📍 台中</span>
+            </div>
+          </div>
+
+          <!-- 卡片 5：澎湖 -->
+          <div class="footprint-card" onclick="openLightbox('trip_hualien_detail.jpg', '老波說像帶小孩出門^^')">
+            <div class="footprint-banner">
+              <img src="trip_hualien_cover.jpg" alt="ERR" style="object-position: center bottom;">
+            </div>
+            <div class="footprint-body">
+              <h4>澎湖假期</h4>
+              <p>澎湖好美、天氣好熱、坐船好晃。</p>
+              <span class="footprint-tag">📍 澎湖</span>
+            </div>
+          </div>
+
+          <!-- 卡片 6：下一站 -->
+          <div class="footprint-card" onclick="openLightbox('trip_next_detail.jpg', '解鎖下一個地點：準備出發去哪裡玩呢？')">
+            <div class="footprint-banner">
+              <img src="trip_next_cover.jpg" alt="ERR" style="object-position: center top;">
+            </div>
+            <div class="footprint-body">
+              <h4>下一站：未完待續...</h4>
+              <p>還有好多想跟你一起踩點的城市，等我們一起去解鎖！</p>
+              <span class="footprint-tag">📍 NEXT DESTINATION</span>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="slider-btn next-btn" onclick="slideFootprints(1)">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </section>
+
+
+
+    <!-- 區塊 4: 刮刮樂彩蛋與問答 -->
+    <section id="section-scratch">
+      <h3 class="section-title">解鎖隱藏願望券</h3>
+      <div class="scratch-container">
+        <p style="margin-bottom: 15px; color: var(--text-muted);">用手指/滑鼠刮開銀色塗層，看看特別禮物！</p>
+        <div class="scratch-wrap">
+          <div class="scratch-secret" id="scratch-secret">
+            <div class="reward-icon">🎁</div>
+            <h4>無條件願望兌換券</h4>
+
+          </div>
+          <canvas id="scratch-canvas"></canvas>
+        </div>
+      </div>
+
+      <h3 class="section-title">兩週年默契小考驗</h3>
+      <div class="quiz-card" id="quiz-box">
+
+        <div class="quiz-question-group" data-question="q1">
+          <h4 class="quiz-q-title">Q1: 第一次看電影時我們看了什麼？</h4>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q1', 'A')">A. 塔羅牌</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q1', 'B')">B. 心葬</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q1', 'C')">C. 禁夜屍</div>
+          </div>
+        </div>
+
+        <div class="quiz-question-group" data-question="q2">
+          <h4 class="quiz-q-title">Q2: 我最喜歡什麼？</h4>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q2', 'A')">A. 波寶</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q2', 'B')">B. 咖波</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q2', 'C')">C. 老波</div>
+          </div>
+        </div>
+
+        <div class="quiz-question-group" data-question="q3">
+          <h4 class="quiz-q-title">Q3: 我們第一次一起去旅行住的地方在哪裡？</h4>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q3', 'A')">A. 台北</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q3', 'B')">B. 宜蘭</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q3', 'C')">C. 台中</div>
+          </div>
+        </div>
+
+        <div class="quiz-question-group" data-question="q4">
+          <h4 class="quiz-q-title">Q4: 甚麼時候認識的？</h4>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q4', 'A')">A. 2024</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q4', 'B')">B. 2023</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q4', 'C')">C. 2022</div>
+          </div>
+        </div>
+
+        <div class="quiz-question-group" data-question="q5">
+          <h4 class="quiz-q-title">Q5: 怎麼認識的？</h4>
+          <div class="quiz-options">
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q5', 'A')">A. 探探</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q5', 'B')">B. Cheers</div>
+            <div class="quiz-option" onclick="selectQuizOption(this, 'q5', 'C')">C. HeyMandi</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+          <button class="punch-btn" onclick="submitQuiz()" style="background: var(--primary);">
+            <i class="fa-solid fa-paper-plane"></i> 送出答案
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 網頁原生信封與像素半透明愛心區塊 -->
+    <div class="envelope-box-section" id="section-envelope">
+      <div class="pixel-hearts-container">
+        <div class="pixel-heart pink p1"></div>
+        <div class="pixel-heart white p2"></div>
+        <div class="pixel-heart white p3"></div>
+        <div class="pixel-heart pink p4"></div>
+      </div>
+
+      <div class="page-envelope" id="page-envelope" onclick="openOnpageEnvelope()">
+        <div class="page-env-flap"></div>
+        <div class="page-env-letter"></div>
+        <div class="page-env-front"></div>
+        <div class="page-env-hint">💌 點擊打開真心話信封</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 頁尾製作人資訊區塊 -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-title">
+        <i class="fa-solid fa-laptop-code"></i> CREATED WITH <span class="footer-heart">♥</span>
+      </div>
+      <p class="footer-credits">
+        策劃與製作：<strong>宇婕</strong><br>
+        兩週年特別限定版 ｜ 獻給老波 💕<br>
+        認真看我做很久 :D
+      </p>
+      <p style="font-size: 0.75rem; color: #a08c80; margin-top: 4px; font-family: var(--font-sans);">
+        © 2026 OUR 2ND ANNIVERSARY. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+  <!-- 默契測驗結果彈窗 (Modal - 奶蛙照片置中版) -->
+  <div class="modal-overlay" id="quiz-result-modal">
+    <div class="reward-modal-paper" style="max-width: 480px; text-align: left;">
+      <!-- 🐸 奶蛙照片置中容器 (已移除表情符號) -->
+      <div
+        style="width: 100%; height: 260px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; background: #fcecee; display: flex; justify-content: center; align-items: center;">
+        <img id="quiz-result-img" src="frog_happy.jpg" alt="奶蛙測驗結果"
+          style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </div>
+
+      <div style="text-align: center;">
+        <div class="reward-modal-icon" id="quiz-result-icon">🎉</div>
+        <h3 id="quiz-result-title">測驗結果</h3>
+        <p class="reward-title" id="quiz-score-text">答對 0 題 ｜ 答錯 0 題</p>
+      </div>
+      <div id="quiz-wrong-details"
+        style="margin-top: 15px; font-size: 0.9rem; line-height: 1.6; max-height: 200px; overflow-y: auto;">
+      </div>
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="punch-btn" onclick="closeQuizResultModal()">收到！繼續看展覽</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 信件彈窗 (Modal) -->
+  <div class="modal-overlay" id="letter-modal">
+    <div class="letter-paper">
+      <button class="close-btn" onclick="closeLetter()">&times;</button>
+      <h3 style="color: var(--primary-dark); margin-bottom: 15px;">兩週年快樂，老波! 💕</h3>
+      <p id="typewriter-text" style="white-space: pre-line;"></p>
+    </div>
+  </div>
+
+  <!-- 刮刮樂恭喜獲獎彈窗 (Modal) -->
+  <div class="modal-overlay" id="reward-modal">
+    <div class="reward-modal-paper">
+      <div class="reward-modal-icon">🎉</div>
+      <h3>恭喜獲得！</h3>
+      <p class="reward-title">「願望兌換券」</p>
+      <p class="reward-desc">兩週年限定！兌換一個願望 💕</p>
+      <button class="punch-btn" onclick="closeRewardModal()" style="margin-top: 20px;">收下獎品</button>
+    </div>
+  </div>
+
+  <!-- 點擊放大檢視照片 Lightbox Modal -->
+  <div class="modal-overlay" id="lightbox-modal">
+    <div class="lightbox-paper">
+      <button class="close-btn" onclick="closeLightbox()">&times;</button>
+      <div class="lightbox-img-box" id="lightbox-box">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <h3 id="lightbox-title" style="color: var(--primary-dark); margin-top: 10px;">照片說明</h3>
+      <button class="punch-btn" onclick="closeLightbox()"
+        style="margin-top: 15px; padding: 8px 24px; font-size: 0.95rem;">關閉</button>
+    </div>
+  </div>
+
+  <!-- 1. 通關密碼驗證彈窗 (Modal) -->
+  <div class="modal-overlay" id="pwd-modal">
+    <div class="reward-modal-paper" style="max-width: 360px;">
+      <div class="reward-modal-icon">🔐</div>
+      <h3>通關密碼驗證</h3>
+      <p class="reward-desc" style="margin-top: 5px; color: var(--text-muted);">
+        提示：紀念日日期 (4位數)
+      </p>
+      <div style="margin-top: 15px;">
+        <input type="password" id="ticket-pwd" maxlength="4"
+          style="width: 100%; text-align: center; font-size: 1.5rem; letter-spacing: 6px; padding: 10px; border: 2px solid #f2d6dc; border-radius: 12px; outline: none; font-family: var(--font-sans);"
+          onkeydown="if(event.key==='Enter') checkTicketPassword()">
+        <p id="pwd-error" style="color: #e53935; font-size: 0.85rem; margin-top: 8px; display: none;">❌ 密碼錯誤，再想想看～</p>
+      </div>
+      <button class="punch-btn" onclick="checkTicketPassword()"
+        style="margin-top: 18px; width: 100%; justify-content: center;">
+        確認驗票
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. 🐸 奶蛙密碼錯誤全螢幕彈窗 (Modal) -->
+  <div class="modal-overlay" id="frog-modal" style="z-index: 10000;">
+    <div class="reward-modal-paper" style="max-width: 400px; padding: 25px; text-align: center;">
+      <!-- 📷 奶蛙照片置中 -->
+      <div
+        style="width: 100%; height: 250px; border-radius: 12px; overflow: hidden; margin-bottom: 15px; background: #fcecee; display: flex; justify-content: center; align-items: center;">
+        <img src="frog.jpg" alt="奶蛙密碼錯誤" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+
+      <h3 style="color: #e53935; font-size: 1.5rem; margin-bottom: 6px;">❌ 密碼錯誤！</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 18px;">
+        奶蛙發出警告：這不是我們的紀念日，再想想看～
+      </p>
+
+      <button class="punch-btn" onclick="closeFrogModal()"
+        style="background: var(--primary-dark); width: 100%; justify-content: center;">
+        重新輸入密碼
+      </button>
+    </div>
+  </div>
+
+  <!-- 華麗全螢幕兩週年快樂驚喜 Banner -->
+  <div class="anniversary-banner" id="anniversary-banner">
+    <div class="anniversary-title">✨ 兩週年快樂 ✨</div>
+    <div class="anniversary-sub">HAPPY 2ND ANNIVERSARY!</div>
+  </div>
+
+  <!-- 引入獨立 JavaScript 腳本檔 -->
+  <script src="index.js"></script>
+</body>
+
+</html>
